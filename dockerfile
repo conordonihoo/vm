@@ -11,7 +11,7 @@ ENV LANG "en_US.UTF-8"
 # dependencies
 RUN apt-get install -y python3
 RUN apt-get install -y gcc
-# TODO: add vim, tmux, git, and the dockerfile repo
+# TODO: add homebrew, vim, tmux, git, and the dockerfile repo
 
 # working directory
 WORKDIR /home
