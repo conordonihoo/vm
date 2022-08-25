@@ -1,9 +1,6 @@
 # base os image
 FROM ubuntu:latest
 
-# use bash not sh
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
 # standard update
 RUN apt-get update -y
 
@@ -25,7 +22,7 @@ RUN apt-get install -y git
 
 # dotfiles
 RUN cd $BASEDIR && git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull
-RUN cd $BASEDIR/dotfiles && source ./install.sh
+RUN cd $BASEDIR/dotfiles && ./install.sh
 
 # working directory
 WORKDIR $BASEDIR
