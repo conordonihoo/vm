@@ -4,6 +4,9 @@ FROM ubuntu:latest
 # standard update
 RUN apt-get update -y
 
+# base directory
+ENV BASEDIR "/home"
+
 # encode
 ENV LC_CTYPE "en_US.UTF-8"
 ENV LANG "en_US.UTF-8"
@@ -11,7 +14,14 @@ ENV LANG "en_US.UTF-8"
 # dependencies
 RUN apt-get install -y python3
 RUN apt-get install -y gcc
-# TODO: add homebrew, vim, tmux, git, and the dockerfile repo
+RUN apt-get install -y vim
+RUN apt-get install -y direnv
+RUN apt-get install -y tmux
+RUN apt-get install -y git
+
+# dotfiles
+RUN cd $BASEDIR && git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull
+RUN cd $BASEDIR/dotfiles && ./install.sh
 
 # working directory
-WORKDIR /home
+WORKDIR $BASEDIR
