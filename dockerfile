@@ -13,6 +13,7 @@ ENV BASEDIR "/home"
 # encode
 ENV LC_CTYPE "en_US.UTF-8"
 ENV LANG "en_US.UTF-8"
+ENV TERM="xterm-256color"
 
 # dependencies
 RUN apt-get install -y python3
