@@ -4,8 +4,8 @@ FROM ubuntu:latest
 # standard update
 RUN apt-get update -y
 
-# base directory
-ENV BASEDIR "/home"
+# home directory
+ENV HOME="/home"
 
 # encode
 ENV LC_CTYPE "en_US.UTF-8"
@@ -19,10 +19,11 @@ RUN apt-get install -y vim
 RUN apt-get install -y direnv
 RUN apt-get install -y tmux
 RUN apt-get install -y git
+RUN apt-get install -y curl
 
 # dotfiles
-RUN cd $BASEDIR && git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull
-RUN cd $BASEDIR/dotfiles && ./install.sh
+RUN git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull
+RUN cd dotfiles && ./install.sh
 
 # working directory
-WORKDIR $BASEDIR
+WORKDIR $HOME
