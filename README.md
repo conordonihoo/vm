@@ -1,5 +1,5 @@
 # Custom VM
-
+This repo uses Docker to immitate a lightweight VM. The biggest pro of using Docker is its portability.
 ### Building a VM image:
 ```sh
 docker build -t conordonihoo/vm:<specific-tag> .
