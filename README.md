@@ -8,6 +8,10 @@ docker build -t conordonihoo/vm:<specific-tag> .
 ```sh
 docker push conordonihoo/vm:<specific-tag>
 ```
+### Pulling a VM image from Docker Hub:
+```sh
+docker pull conordonihoo/vm:<specific-tag>
+```
 ### Running a VM image interactively:
 ```sh
 docker run --rm -it conordonihoo/vm:<specific-tag>
