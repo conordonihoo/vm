@@ -22,8 +22,8 @@ RUN apt-get install -y git
 RUN apt-get install -y curl
 
 # dotfiles
-RUN git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull
-RUN cd dotfiles && ./install.sh
+RUN cd $HOME && git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull
+RUN cd $HOME/dotfiles && ./install.sh
 
 # working directory
 WORKDIR $HOME
