@@ -1,4 +1,4 @@
-# The base dockerfile for all my VMs.
+# The dockerfile for my machine leaerning class VM.
 # base os image
 FROM ubuntu:latest
 
@@ -23,8 +23,15 @@ RUN apt-get install -y tmux
 RUN apt-get install -y git
 RUN apt-get install -y curl
 
+# python packages
+RUN pip3 install numpy
+RUN pip3 install matplotlib
+RUN pip3 install pandas
+RUN pip3 install sklearn
+
 # git repos
 RUN cd $HOME && git clone https://github.com/conordonihoo/dotfiles.git && cd dotfiles && git pull && ./install.sh
+RUN cd $HOME && git clone https://github.com/conordonihoo/aiml.git && cd aiml && git pull
 
 # working directory
 WORKDIR $HOME
