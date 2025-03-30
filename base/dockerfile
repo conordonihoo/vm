@@ -25,6 +25,8 @@ RUN apt-get update -y && apt-get upgrade -y && \
     neovim \
     ripgrep \
     fd-find \
+    nodejs \
+    npm \
     direnv \
     tmux \
     git \
