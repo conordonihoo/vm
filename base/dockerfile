@@ -22,11 +22,11 @@ RUN apt-get update -y && apt-get upgrade -y && \
     python-is-python3 \
     gcc \
     vim \
-    neovim \
     ripgrep \
     fd-find \
     nodejs \
     npm \
+    zip \
     direnv \
     tmux \
     git \
@@ -54,16 +54,27 @@ RUN useradd -m -s /bin/bash conor && \
 # Working directory
 WORKDIR /home/conor
 
+USER conor
+
 # -----------------------
 # Synced
 # -----------------------
 
-RUN mkdir /home/conor/synced && \
-    chown -R conor:conor /home/conor/synced
+RUN mkdir /home/conor/synced
+
+# -----------------------
+# Neovim
+# -----------------------
+
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
+    sudo rm -rf /opt/nvim && \
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 # -----------------------
 # Python
 # -----------------------
+
+USER root
 
 # Create the virtual environment
 RUN python3 -m venv /home/conor/.venv && \
